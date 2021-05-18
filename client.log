@@ -1,6 +1,2 @@
-INFO:root:Client started
-INFO:root:message send, status_code = 200
-INFO:root:Client started
-INFO:root:message send, status_code = 200
-INFO:root:Client started
-ERROR:root:message sending failed, status_code = 403
+05/18/2021 01:09:47 PM - INFO - Client started
+05/18/2021 01:09:47 PM - ERROR - message sending failed, status_code = 403

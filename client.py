@@ -4,7 +4,7 @@ import time
 import psutil
 import logging
 
-logging.basicConfig(filename='client.log', level=logging.INFO)
+logging.basicConfig(filename='client.log', format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 logging.info('Client started')
 
 SERVER_URL = 'http://ya.ru'
