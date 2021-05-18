@@ -4,10 +4,12 @@ import time
 import psutil
 import logging
 
+# Базовая конфигурация логгера
 logging.basicConfig(filename='client.log', format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
-logging.info('Client started')
+logging.info('Client started') 
 
-SERVER_URL = 'http://ya.ru'
+SERVER_URL = '' # адрес серверной части приложения
+INTERVAL = 60 # Переменная интервала опроса в секундах
 response = {}
 
 
@@ -19,7 +21,7 @@ while True:
     for key in psutil.net_if_stats().keys():
         
         network_dict = {
-                key : "Up" if psutil.net_if_stats()[key].isup else "Down",
+                key : "Up" if psutil.net_if_stats()[key].isup else "Down",  # ternary IF for example
                 'mtu': psutil.net_if_stats()[key].mtu
                 }
         response['network'].append(network_dict)
@@ -57,8 +59,11 @@ while True:
             }
         )
     send_msg = requests.post(SERVER_URL, data=response)
+
     if send_msg.status_code == 200:
         logging.info('message send, status_code = 200')
     else:
         logging.error(f'message sending failed, status_code = {send_msg.status_code}')
-    time.sleep(60)
+        logging.info(f'NOT SENDED MESSAGE: {response}')
+    
+    time.sleep(INTERVAL)
