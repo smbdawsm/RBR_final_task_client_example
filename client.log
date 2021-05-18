@@ -1,0 +1,6 @@
+INFO:root:Client started
+INFO:root:message send, status_code = 200
+INFO:root:Client started
+INFO:root:message send, status_code = 200
+INFO:root:Client started
+ERROR:root:message sending failed, status_code = 403
